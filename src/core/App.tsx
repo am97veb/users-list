@@ -2,8 +2,18 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { toUsers } from "./routes";
 import { Navigation } from "./Navigation";
 import { UsersListPage } from "../features/UsersListPage";
+import { useAppDispatch } from "./hooks";
+import { useEffect } from "react";
+import { fetchUsers } from "./usersThunk";
 
-export const App = () => (
+export const App = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  return (
     <HashRouter>
       <Navigation />
       <Routes>
@@ -12,4 +22,4 @@ export const App = () => (
       </Routes>
     </HashRouter>
   );
-
+};
