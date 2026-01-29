@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 import { fetchUsers } from './usersThunk';
+import type { UsersState } from './types';
 
-const initialState = {
+const initialState: UsersState = {
   users: [],
   loading: false,
-  error: "",
+  error: null,
 };
 
 const usersSlice = createSlice({
