@@ -4,7 +4,7 @@ import { Navigation } from "./Navigation";
 import { UsersListPage } from "../features/UsersListPage";
 import { useAppDispatch } from "./hooks";
 import { useEffect } from "react";
-import { fetchUsers } from "./usersThunk";
+import { fetchUsers } from "../features/UsersListPage/usersThunk";
 
 export const App = () => {
   const dispatch = useAppDispatch();

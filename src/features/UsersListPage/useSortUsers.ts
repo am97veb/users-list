@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppSelector } from "../../core/hooks";
-import { selectUsers, selectUsersError, selectUsersLoading } from "../../core/usersSlice";
+import { selectUsers, selectUsersError, selectUsersLoading } from "./usersSlice";
 
 export const useSortUsers = () => {
   const usersList = useAppSelector(selectUsers);
