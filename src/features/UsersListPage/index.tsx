@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useSortUsers } from "./useSortUsers";
 import { useFilterUsersByAddress } from "./useFilterUsersByAddress";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "./usersSlice";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
   const { sortedUsers, toggleSort, loading, error } = useSortUsers();
   const filteredUsers = useFilterUsersByAddress({ sortedUsers, searchAddress });
+  const dispatch = useDispatch();
 
   if (loading) return <p>Loading users...</p>;
   if (error) return <p>error: {error}</p>;
@@ -23,6 +26,7 @@ export const UsersListPage = () => {
         filteredUsers.map((user) => (
           <ul>
             <li key={user.id}>
+              <button onClick={() => dispatch(deleteUser(user.id))}>delete</button>
               {user.name}
               {user.email}
               {user.address.city}
