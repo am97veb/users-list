@@ -1,15 +1,4 @@
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  address: UserAddress;
-}
-
-export interface UserAddress {
-    city: string;
-    street: string;
-    zipcode: string;
-}
+import type { User } from "../features/UsersListPage/types";
 
 export interface UsersState {
   users: User[];
