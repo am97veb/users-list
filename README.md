@@ -1,3 +1,43 @@
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: React.js
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Styling**: Styled Components
+- **State Management & Data Fetching**: Redux Toolkit (Slices + Thunks)
+- **Routing**: React Router
+- **HTTP Client**: Axios
+
+## ⚙ Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/am97veb/users-list.git
+```
+
+Navigate to the project directory:
+
+```
+cd users-list
+```
+
+Install the dependencies:
+
+```
+npm install
+```
+
+## 👨🏻‍💻 Usage
+
+Run the development server:
+
+```
+npm run dev
+```
+
+The application will be available at http://localhost:5173
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
