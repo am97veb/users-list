@@ -1,4 +1,4 @@
-import type { FilterUsersByAddressProps } from "../types";
+import type { FilterUsersByAddressProps } from "./types";
 
 export const useFilterUsersByAddress = ({
   sortedUsers,
