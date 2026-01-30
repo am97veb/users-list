@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from './store';
-import { fetchUsers } from './usersThunk';
-import type { UsersState } from './types';
+import { createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "./store";
+import { fetchUsers } from "./usersThunk";
+import type { UsersState } from "./types";
 
 const initialState: UsersState = {
   users: [],
@@ -12,9 +12,7 @@ const initialState: UsersState = {
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -26,10 +24,12 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Błąd';
+        state.error = action.error.message || "Błąd";
       });
   },
 });
 
 export const selectUsers = (state: RootState) => state.users.users;
+export const selectUsersLoading = (state: RootState) => state.users.loading;
+export const selectUsersError = (state: RootState) => state.users.error;
 export default usersSlice.reducer;
