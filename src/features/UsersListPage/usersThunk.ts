@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchApiData } from "../fetchApiData";
+import { fetchApiData } from "../../fetchApiData";
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
