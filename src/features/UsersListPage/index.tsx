@@ -3,6 +3,8 @@ import { useSortUsers } from "./useSortUsers";
 import { useFilterUsersByAddress } from "./useFilterUsersByAddress";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "./usersSlice";
+import { Link } from "react-router-dom";
+import { toSelectUser } from "../../core/routes";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -26,6 +28,7 @@ export const UsersListPage = () => {
         filteredUsers.map((user) => (
           <ul>
             <li key={user.id}>
+              <Link to={toSelectUser({ id: String(user.id) })}>preview</Link>
               <button onClick={() => dispatch(deleteUser(user.id))}>delete</button>
               {user.name}
               {user.email}
