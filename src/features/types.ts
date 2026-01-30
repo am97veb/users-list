@@ -13,7 +13,7 @@ export interface UserAddress {
   zipcode: string;
 }
 
-export interface FilterUsersProps {
+export interface FilterUsersByAddressProps {
   sortedUsers: User[];
-  searchUser: string;
+  searchAddress: string;
 }
