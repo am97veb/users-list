@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useAppSelector } from "../../core/hooks";
-import { selectUsers } from "../../core/usersSlice";
+import { selectUsers, selectUsersError, selectUsersLoading } from "../../core/usersSlice";
 
 export const useSortUsers = () => {
   const usersList = useAppSelector(selectUsers);
+  const loading = useAppSelector(selectUsersLoading);
+  const error = useAppSelector(selectUsersError);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const sortedUsers = [...usersList].sort((a, b) => {
@@ -18,5 +20,5 @@ export const useSortUsers = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  return { sortedUsers, toggleSort };
+  return { sortedUsers, toggleSort, loading, error };
 };

@@ -1,7 +1,10 @@
 import { useSortUsers } from "./useSortUsers";
 
 export const UsersListPage = () => {
-  const { sortedUsers, toggleSort } = useSortUsers();
+  const { sortedUsers, toggleSort, loading, error } = useSortUsers();
+
+  if (loading) return <p>Loading users...</p>;
+  if (error) return <p>error: {error}</p>;
 
   return (
     <>
