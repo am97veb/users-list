@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "./store";
+import type { RootState } from "../../core/store";
 import { fetchUsers } from "./usersThunk";
-import type { UsersState } from "./types";
+import type { UsersState } from "../../core/types";
 
 const initialState: UsersState = {
   users: [],
@@ -12,7 +12,12 @@ const initialState: UsersState = {
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    deleteUser: ({ users }, { payload: userId }) => {
+      const index = users.findIndex((user) => user.id === userId);
+      users.splice(index, 1);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -29,7 +34,10 @@ const usersSlice = createSlice({
   },
 });
 
+export const { deleteUser } = usersSlice.actions;
 export const selectUsers = (state: RootState) => state.users.users;
 export const selectUsersLoading = (state: RootState) => state.users.loading;
 export const selectUsersError = (state: RootState) => state.users.error;
+export const selectUserById = (state: RootState, userId: number) =>
+  selectUsers(state).find(({ id }) => id === userId);
 export default usersSlice.reducer;
