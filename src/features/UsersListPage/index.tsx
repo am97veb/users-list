@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSortUsers } from "./useSortUsers";
 import { useFilterUsersByAddress } from "./useFilterUsersByAddress";
-import { useDispatch } from "react-redux";
 import { deleteUser, selectUsersError, selectUsersLoading } from "./usersSlice";
 import { Link } from "react-router-dom";
-import { toSelectUser } from "../../core/routes";
-import { useAppSelector } from "../../core/hooks";
+import { toAddUsers, toSelectUser } from "../../core/routes";
+import { useAppDispatch, useAppSelector } from "../../core/hooks";
+import { fetchUsers } from "./usersThunk";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -13,7 +13,11 @@ export const UsersListPage = () => {
   const filteredUsers = useFilterUsersByAddress({ sortedUsers, searchAddress });
   const loading = useAppSelector(selectUsersLoading);
   const error = useAppSelector(selectUsersError);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
   if (loading) return <p>Loading users...</p>;
   if (error) return <p>error: {error}</p>;
@@ -27,9 +31,9 @@ export const UsersListPage = () => {
         value={searchAddress}
         onChange={(event) => setSearchAddress(event.target.value)}
       />
-      {filteredUsers &&
-        filteredUsers.map((user) => (
-          <ul>
+      <ul>
+        {filteredUsers &&
+          filteredUsers.map((user) => (
             <li key={user.id}>
               <Link to={toSelectUser({ id: String(user.id) })}>preview</Link>
               <button onClick={() => dispatch(deleteUser(user.id))}>
@@ -41,8 +45,8 @@ export const UsersListPage = () => {
               {user.address.zipcode}
               {user.address.street}
             </li>
-          </ul>
-        ))}
+          ))}
+      </ul>
     </>
   );
 };
