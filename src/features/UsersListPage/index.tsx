@@ -3,7 +3,7 @@ import { useSortUsers } from "./useSortUsers";
 import { useFilterUsersByAddress } from "./useFilterUsersByAddress";
 import { deleteUser, selectUsersError, selectUsersLoading } from "./usersSlice";
 import { Link } from "react-router-dom";
-import { toAddUsers, toSelectUser } from "../../core/routes";
+import { toSelectUser } from "../../core/routes";
 import { useAppDispatch, useAppSelector } from "../../core/hooks";
 import { fetchUsers } from "./usersThunk";
 
