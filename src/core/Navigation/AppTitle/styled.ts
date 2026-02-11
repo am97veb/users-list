@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const StyledAppTitle = styled.h1`
-  font-size: 20px;
+export const StyledAppTitle = styled(Link)`
+  font-size: 30px;
+  text-decoration: none;
+  color: whitesmoke;
 `;
