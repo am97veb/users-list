@@ -2,11 +2,14 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const BarWrapper = styled.div`
-  max-width: 1500px;
-  background-color: grey;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px;
+  color: whitesmoke;
+  background-color: grey;
+  margin: 0 auto 20px;
+  border-radius: 0 0 5px 5px;
 `;
 
 export const NavigationList = styled.ul`
@@ -22,4 +25,5 @@ export const NavigationItem = styled.li`
 
 export const NavigationLink = styled(NavLink)`
   text-decoration: none;
+  color: whitesmoke;
 `;
