@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { toAddUsers, toSelectUser } from "../../core/routes";
 import { useAppDispatch, useAppSelector } from "../../core/hooks";
 import { fetchUsers } from "./usersThunk";
-import { Wrapper } from "./styled";
+import { AddUser, Button, Input, Wrapper } from "./styled";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -26,14 +26,14 @@ export const UsersListPage = () => {
   return (
     <>
       <Wrapper>
-        <button onClick={toggleSort}>sort</button>
-        <input
+        <Input
           type="text"
           placeholder="Szukaj po adresie (ulica, miasto)..."
           value={searchAddress}
           onChange={(event) => setSearchAddress(event.target.value)}
         />
-        <Link to={toAddUsers()}>add user</Link>
+        <Button onClick={toggleSort}>sort</Button>
+        <AddUser to={toAddUsers()}>add user</AddUser>
       </Wrapper>
       <ul>
         {filteredUsers &&
