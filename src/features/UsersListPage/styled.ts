@@ -35,3 +35,20 @@ export const Input = styled.input`
   border-radius: 10px;
   width: 100%;
 `;
+
+export const StyledTable = styled.table`
+  border-collapse: collapse;
+`;
+
+export const UserButtonsWrapper = styled.div`
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;
+
+export const StyledUserData = styled.td`
+  width: 150px;
+  padding: 0 10px;
+  border-right: 1px solid gray;
+`;

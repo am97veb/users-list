@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { useSortUsers } from "./useSortUsers";
 import { useFilterUsersByAddress } from "./useFilterUsersByAddress";
 import { deleteUser, selectUsersError, selectUsersLoading } from "./usersSlice";
-import { Link } from "react-router-dom";
 import { toAddUsers, toSelectUser } from "../../core/routes";
 import { useAppDispatch, useAppSelector } from "../../core/hooks";
 import { fetchUsers } from "./usersThunk";
-import { AddUser, Button, Input, Wrapper } from "./styled";
+import { AddUser, Button, Input, StyledTable, StyledUserData, UserButtonsWrapper, Wrapper } from "./styled";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -35,22 +34,26 @@ export const UsersListPage = () => {
         <Button onClick={toggleSort}>sort</Button>
         <AddUser to={toAddUsers()}>add user</AddUser>
       </Wrapper>
-      <table>
+      <StyledTable>
         {filteredUsers &&
           filteredUsers.map((user) => (
             <tr key={user.id}>
-              <Link to={toSelectUser({ id: String(user.id) })}>preview</Link>
-              <button onClick={() => dispatch(deleteUser(user.id))}>
-                delete
-              </button>
-             <td> {user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.address.city}</td>
-              <td>{user.address.zipcode}</td>
-              <td>{user.address.street}</td>
+              <StyledUserData>{user.name}</StyledUserData>
+              <StyledUserData>{user.email}</StyledUserData>
+              <StyledUserData>{user.address.city}</StyledUserData>
+              <StyledUserData>{user.address.zipcode}</StyledUserData>
+              <StyledUserData>{user.address.street}</StyledUserData>
+              <UserButtonsWrapper>
+                <AddUser to={toSelectUser({ id: String(user.id) })}>
+                  preview
+                </AddUser>
+                <Button onClick={() => dispatch(deleteUser(user.id))}>
+                  delete
+                </Button>
+              </UserButtonsWrapper>
             </tr>
           ))}
-      </table>
+      </StyledTable>
     </>
   );
 };
