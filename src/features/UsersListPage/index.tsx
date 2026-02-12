@@ -35,22 +35,22 @@ export const UsersListPage = () => {
         <Button onClick={toggleSort}>sort</Button>
         <AddUser to={toAddUsers()}>add user</AddUser>
       </Wrapper>
-      <ul>
+      <table>
         {filteredUsers &&
           filteredUsers.map((user) => (
-            <li key={user.id}>
+            <tr key={user.id}>
               <Link to={toSelectUser({ id: String(user.id) })}>preview</Link>
               <button onClick={() => dispatch(deleteUser(user.id))}>
                 delete
               </button>
-              {user.name}
-              {user.email}
-              {user.address.city}
-              {user.address.zipcode}
-              {user.address.street}
-            </li>
+             <td> {user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.address.city}</td>
+              <td>{user.address.zipcode}</td>
+              <td>{user.address.street}</td>
+            </tr>
           ))}
-      </ul>
+      </table>
     </>
   );
 };
