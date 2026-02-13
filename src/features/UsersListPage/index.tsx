@@ -5,7 +5,16 @@ import { deleteUser, selectUsersError, selectUsersLoading } from "./usersSlice";
 import { toAddUsers, toSelectUser } from "../../core/routes";
 import { useAppDispatch, useAppSelector } from "../../core/hooks";
 import { fetchUsers } from "./usersThunk";
-import { AddUser, Button, Input, StyledTable, StyledUserData, UserButtonsWrapper, Wrapper } from "./styled";
+import {
+  AddUser,
+  Button,
+  TableWrapper,
+  Input,
+  StyledTable,
+  StyledUserData,
+  UserButtonsWrapper,
+  Wrapper,
+} from "./styled";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -34,26 +43,28 @@ export const UsersListPage = () => {
         <Button onClick={toggleSort}>sort</Button>
         <AddUser to={toAddUsers()}>add user</AddUser>
       </Wrapper>
-      <StyledTable>
-        {filteredUsers &&
-          filteredUsers.map((user) => (
-            <tr key={user.id}>
-              <StyledUserData>{user.name}</StyledUserData>
-              <StyledUserData>{user.email}</StyledUserData>
-              <StyledUserData>{user.address.city}</StyledUserData>
-              <StyledUserData>{user.address.zipcode}</StyledUserData>
-              <StyledUserData>{user.address.street}</StyledUserData>
-              <UserButtonsWrapper>
-                <AddUser to={toSelectUser({ id: String(user.id) })}>
-                  preview
-                </AddUser>
-                <Button onClick={() => dispatch(deleteUser(user.id))}>
-                  delete
-                </Button>
-              </UserButtonsWrapper>
-            </tr>
-          ))}
-      </StyledTable>
+      <TableWrapper>
+        <StyledTable>
+          {filteredUsers &&
+            filteredUsers.map((user) => (
+              <tr key={user.id}>
+                <StyledUserData>{user.name}</StyledUserData>
+                <StyledUserData>{user.email}</StyledUserData>
+                <StyledUserData>{user.address.city}</StyledUserData>
+                <StyledUserData>{user.address.zipcode}</StyledUserData>
+                <StyledUserData>{user.address.street}</StyledUserData>
+                <UserButtonsWrapper>
+                  <AddUser to={toSelectUser({ id: String(user.id) })}>
+                    preview
+                  </AddUser>
+                  <Button onClick={() => dispatch(deleteUser(user.id))}>
+                    delete
+                  </Button>
+                </UserButtonsWrapper>
+              </tr>
+            ))}
+        </StyledTable>
+      </TableWrapper>
     </>
   );
 };
