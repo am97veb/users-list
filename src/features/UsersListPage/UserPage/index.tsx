@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../../core/hooks";
 import { selectUserById } from "../usersSlice";
+import { mapUserData } from "./mapUserData";
 
 export const UserPage = () => {
   const { id } = useParams();
@@ -9,7 +10,7 @@ export const UserPage = () => {
   return (
     <ul>
       {user &&
-        Object.entries(user).map(([key, value]) => (
+        Object.entries(mapUserData(user)).map(([key, value]) => (
           <li key={key}>
             <span>{key}</span>:<span>{value}</span>
           </li>
