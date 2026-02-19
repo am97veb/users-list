@@ -7,7 +7,7 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  padding: 15px 0 10px;
+  padding: 20px 0 10px;
   border-bottom: 1px solid gray;
   max-width: 500px;
   display: flex;
