@@ -13,6 +13,7 @@ export interface UserAddress {
   city: string;
   street: string;
   zipcode: string;
+  suite: string;
   geo: AddressGeo;
 }
 
