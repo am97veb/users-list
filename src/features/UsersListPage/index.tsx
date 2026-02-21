@@ -36,7 +36,7 @@ export const UsersListPage = () => {
       <Wrapper>
         <Input
           type="text"
-          placeholder="Szukaj po adresie (ulica, miasto)..."
+          placeholder="Search by address (street, city)..."
           value={searchAddress}
           onChange={(event) => setSearchAddress(event.target.value)}
         />
