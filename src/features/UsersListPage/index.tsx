@@ -2,19 +2,17 @@ import { useEffect, useState } from "react";
 import { useSortUsers } from "./useSortUsers";
 import { useFilterUsersByAddress } from "./useFilterUsersByAddress";
 import { deleteUser, selectUsersError, selectUsersLoading } from "./usersSlice";
-import { toAddUsers, toSelectUser } from "../../core/routes";
+import { toSelectUser } from "../../core/routes";
 import { useAppDispatch, useAppSelector } from "../../core/hooks";
 import { fetchUsers } from "./usersThunk";
 import {
-  AddUser,
-  Button,
   TableWrapper,
-  Input,
   StyledTable,
   StyledUserData,
   UserButtonsWrapper,
-  Wrapper,
 } from "./styled";
+import { UsersToolbar } from "./UsersToolbar";
+import { AddUser, Button } from "./UsersToolbar/styed";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -33,16 +31,11 @@ export const UsersListPage = () => {
 
   return (
     <>
-      <Wrapper>
-        <Input
-          type="text"
-          placeholder="Search by address (street, city)..."
-          value={searchAddress}
-          onChange={(event) => setSearchAddress(event.target.value)}
-        />
-        <Button onClick={toggleSort}>sort</Button>
-        <AddUser to={toAddUsers()}>add user</AddUser>
-      </Wrapper>
+      <UsersToolbar
+        searchAddress={searchAddress}
+        onSearchChange={setSearchAddress}
+        onToggleSort={toggleSort}
+      />
       <TableWrapper>
         <StyledTable>
           {filteredUsers &&
