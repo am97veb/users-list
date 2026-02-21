@@ -52,7 +52,11 @@ export const UserButtonsWrapper = styled.div`
 `;
 
 export const StyledUserData = styled.td`
-  width: 150px;
-  padding: 0 10px;
+  width: 200px;
+  padding: 0 20px;
   border-right: 1px solid gray;
+
+  &:first-of-type {
+    padding: 0 20px 0 0;
+  }
 `;
