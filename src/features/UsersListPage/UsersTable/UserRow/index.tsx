@@ -1,8 +1,8 @@
+import { AddUser, Button } from "../../../../common/Button";
 import { useAppDispatch } from "../../../../core/hooks";
 import { toSelectUser } from "../../../../core/routes";
 import type { User } from "../../types";
 import { deleteUser } from "../../usersSlice";
-import { AddUser, Button } from "../../UsersToolbar/styed";
 import { StyledUserData, UserButtonsWrapper } from "./styled";
 
 export const UserRow = ({ user }: { user: User }) => {
