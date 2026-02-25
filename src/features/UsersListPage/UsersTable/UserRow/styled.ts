@@ -16,3 +16,13 @@ export const StyledUserData = styled.td`
     padding: 0 20px 0 0;
   }
 `;
+
+export const TableRow = styled.tr`
+  &:first-of-type ${UserButtonsWrapper} {
+    margin: 0 10px 10px;
+  }
+
+  &:last-of-type ${UserButtonsWrapper} {
+    margin: 10px 10px 0;
+  }
+`;
