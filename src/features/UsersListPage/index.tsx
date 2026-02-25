@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../core/hooks";
 import { fetchUsers } from "./usersThunk";
 import { UsersToolbar } from "./UsersToolbar";
 import { UsersTable } from "./UsersTable";
+import { Loading } from "../../common/Loading";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -17,7 +18,7 @@ export const UsersListPage = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  if (loading) return <p>Loading users...</p>;
+  if (loading) return <Loading/>;
   if (error) return <p>error: {error}</p>;
 
   return (
