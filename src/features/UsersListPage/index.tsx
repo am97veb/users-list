@@ -6,6 +6,7 @@ import { fetchUsers } from "./usersThunk";
 import { UsersToolbar } from "./UsersToolbar";
 import { UsersTable } from "./UsersTable";
 import { Loading } from "../../common/Loading";
+import { Error } from "../../common/Error";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -18,8 +19,11 @@ export const UsersListPage = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  if (loading) return <Loading/>;
-  if (error) return <p>error: {error}</p>;
+  if (loading) return <Loading />;
+  if (error)
+    return (
+      <Error message="Sorry, We can't show users list now." error={error} />
+    );
 
   return (
     <>
