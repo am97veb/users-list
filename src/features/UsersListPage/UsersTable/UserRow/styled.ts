@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const UserButtonsWrapper = styled.div`
-  margin: 10px 10px;
+export const UserButtonsWrapper = styled.td`
+  margin: 10px;
   display: flex;
   flex-direction: column;
   gap: 2px;
