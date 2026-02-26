@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../../../core/hooks";
 import { toSelectUser } from "../../../../core/routes";
 import type { User } from "../../types";
 import { deleteUser } from "../../usersSlice";
-import { StyledUserData, TableRow, UserButtonsWrapper } from "./styled";
+import { TableCell, TableRow, UserButtonsWrapper } from "./styled";
 
 export const UserRow = ({ user }: { user: User }) => {
   const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ export const UserRow = ({ user }: { user: User }) => {
   return (
     <TableRow>
       {userFields.map((field, index) => (
-        <StyledUserData key={index}>{field}</StyledUserData>
+        <TableCell key={index}>{field}</TableCell>
       ))}
       <UserButtonsWrapper>
         <AddUser to={toSelectUser({ id: String(user.id) })}>preview</AddUser>

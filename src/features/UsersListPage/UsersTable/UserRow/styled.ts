@@ -7,7 +7,7 @@ export const UserButtonsWrapper = styled.td`
   gap: 2px;
 `;
 
-export const StyledUserData = styled.td`
+export const TableCell = styled.td`
   width: 200px;
   padding: 0 20px;
   border-right: 1px solid gray;
