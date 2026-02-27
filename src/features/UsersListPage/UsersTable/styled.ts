@@ -6,6 +6,7 @@ export const TableWrapper = styled.div`
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
+  margin-bottom: 20px;
 `;
 
 export const TableHeader = styled.th`
