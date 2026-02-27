@@ -18,6 +18,8 @@ export const TableCell = styled.td<StyledComponentsProps>`
   ${({ isActionCell }) =>
     isActionCell &&
     css`
+      width: auto;
+      padding-right: 0;
       display: flex;
       flex-direction: column;
       gap: 2px;
