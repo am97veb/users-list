@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../../../core/hooks";
 import { toSelectUser } from "../../../../core/routes";
 import type { User } from "../../types";
 import { deleteUser } from "../../usersSlice";
-import { TableCell, TableRow, UserButtonsWrapper } from "./styled";
+import { TableCell, TableRow } from "./styled";
 
 export const UserRow = ({ user }: { user: User }) => {
   const dispatch = useAppDispatch();
@@ -21,10 +21,10 @@ export const UserRow = ({ user }: { user: User }) => {
       {userFields.map((field, index) => (
         <TableCell key={index}>{field}</TableCell>
       ))}
-      <UserButtonsWrapper>
+      <TableCell isActionCell>
         <AddUser to={toSelectUser({ id: String(user.id) })}>preview</AddUser>
         <Button onClick={() => dispatch(deleteUser(user.id))}>delete</Button>
-      </UserButtonsWrapper>
+      </TableCell>
     </TableRow>
   );
 };
