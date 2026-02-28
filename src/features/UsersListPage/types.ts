@@ -14,12 +14,6 @@ export interface UserAddress {
   street: string;
   zipcode: string;
   suite: string;
-  geo: AddressGeo;
-}
-
-export interface AddressGeo {
-  lat: string;
-  lng: string;
 }
 
 export interface Company {
