@@ -1,6 +1,7 @@
 import { AddUser, Button } from "../../../common/Button";
+import { Input } from "../../../common/Input";
 import { toAddUsers } from "../../../core/routes";
-import { Input, Wrapper } from "./styed";
+import { Wrapper } from "./styed";
 import type { UsersToolbarProps } from "./types";
 
 export const UsersToolbar = ({
