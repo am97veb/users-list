@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { type StyledComponentsProps } from "../../features/UsersListPage/types";
 
 export const baseButtonStyle = css`
   width: 75px;
@@ -14,8 +15,16 @@ export const baseButtonStyle = css`
   text-align: center;
 `;
 
-export const Button = styled.button`
-  ${baseButtonStyle}
+export const Button = styled.button<StyledComponentsProps>`
+  ${baseButtonStyle};
+
+  ${({ addUserToListButton }) =>
+    addUserToListButton &&
+    css`
+      min-width: 130px;
+      padding: 2px 15px;
+      align-self: flex-end;
+    `}
 `;
 
 export const AddUser = styled(Link)`
