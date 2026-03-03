@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { type User } from "../UsersListPage/types";
+import { Form, Fieldset, FieldSignature, Label, Legend } from "./styled";
+import { Input } from "../../common/Input";
+import { Button } from "../../common/Button";
 
 export const AddUsersPage = () => {
   const [userData, setUserData] = useState<Omit<User, "id">>({
@@ -22,74 +25,80 @@ export const AddUsersPage = () => {
   });
 
   return (
-    <form>
-      <fieldset>
-        <legend>basic info</legend>
-        <p>
-          <label>
-            name*: <input name="name" type="text" required />
-          </label>
-        </p>
-        <p>
-          <label>
-            email*: <input name="email" type="email" required />
-          </label>
-        </p>
-        <p>
-          <label>
-            phone*: <input name="phone" type="number" required />
-          </label>
-        </p>
-        <p>
-          <label>
-            website: <input name="website" />
-          </label>
-        </p>
-      </fieldset>
+    <Form>
+      <Fieldset>
+        <Legend>basic info</Legend>
 
-      <fieldset>
-        <legend>address</legend>
-        <p>
-          <label>
-            street*: <input name="address.street" required />
-          </label>
-        </p>
-        <p>
-          <label>
-            zip code*: <input name="address.zipcode" type="number" required />
-          </label>
-        </p>
-        <p>
-          <label>
-            city*: <input name="address.city" type="text" required />
-          </label>
-        </p>
-        <p>
-          <label>
-            suite*: <input name="address.suite" type="text" required />
-          </label>
-        </p>
-      </fieldset>
-      <fieldset>
-        <legend>company</legend>
-        <p>
-          <label>
-            name: <input name="company.name" />
-          </label>
-        </p>
-        <p>
-          <label>
-            catchPhrase: <input name="company.catchPhrase" />
-          </label>
-        </p>
-        <p>
-          <label>
-            bs: <input name="company.bs" />
-          </label>
-        </p>
-      </fieldset>
-      <p>* - required fields </p>
-      <button>add to users list</button>
-    </form>
+        <Label>
+          <FieldSignature>name*:</FieldSignature>
+          <Input name="name" type="text" required />
+        </Label>
+
+        <Label>
+          <FieldSignature>email*:</FieldSignature>
+          <Input name="email" type="email" required />
+        </Label>
+
+        <Label>
+          <FieldSignature>phone*:</FieldSignature>
+          <Input name="phone" type="number" required />
+        </Label>
+
+        <Label>
+          <FieldSignature>website:</FieldSignature>
+          <Input name="website" />
+        </Label>
+      </Fieldset>
+
+      <Fieldset>
+        <Legend>address</Legend>
+
+        <Label>
+          <FieldSignature>street*:</FieldSignature>
+          <Input name="address.street" required />
+        </Label>
+
+        <Label>
+          <FieldSignature>zip code*:</FieldSignature>
+          <Input name="address.zipcode" type="number" required />
+        </Label>
+
+        <Label>
+          <FieldSignature>city*:</FieldSignature>
+          <Input
+            name="address.city"
+            type="text"
+            required
+            value={userData.address.city}
+          />
+        </Label>
+
+        <Label>
+          <FieldSignature>suite*:</FieldSignature>
+          <Input name="address.suite" type="text" required />
+        </Label>
+      </Fieldset>
+
+      <Fieldset>
+        <Legend>company</Legend>
+
+        <Label>
+          <FieldSignature>name:</FieldSignature>
+          <Input name="company.name" />
+        </Label>
+
+        <Label>
+          <FieldSignature>catch phrase:</FieldSignature>
+          <Input name="company.catchPhrase" />
+        </Label>
+
+        <Label>
+          <FieldSignature>bs:</FieldSignature>
+          <Input name="company.bs" />
+        </Label>
+      </Fieldset>
+      <p> * required fields </p>
+      <Button addUserToListButton>add to users list</Button>
+    </Form>
   );
 };
