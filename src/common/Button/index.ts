@@ -13,6 +13,10 @@ export const baseButtonStyle = css`
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;
 
 export const Button = styled.button<StyledComponentsProps>`
