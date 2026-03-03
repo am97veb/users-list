@@ -1,4 +1,4 @@
-import { AddUser, Button } from "../../../common/Button";
+import { AddUserPageLink, Button } from "../../../common/Button";
 import { Input } from "../../../common/Input";
 import { toAddUsers } from "../../../core/routes";
 import { Wrapper } from "./styed";
@@ -17,6 +17,6 @@ export const UsersToolbar = ({
       onChange={(event) => onSearchChange(event.target.value)}
     />
     <Button onClick={onToggleSort}>sort</Button>
-    <AddUser to={toAddUsers()}>add user</AddUser>
+    <AddUserPageLink to={toAddUsers()}>add user</AddUserPageLink>
   </Wrapper>
 );

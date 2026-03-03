@@ -27,6 +27,6 @@ export const Button = styled.button<StyledComponentsProps>`
     `}
 `;
 
-export const AddUser = styled(Link)`
+export const AddUserPageLink = styled(Link)`
   ${baseButtonStyle}
 `;

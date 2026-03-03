@@ -1,4 +1,4 @@
-import { AddUser, Button } from "../../../../common/Button";
+import { AddUserPageLink, Button } from "../../../../common/Button";
 import { useAppDispatch } from "../../../../core/hooks";
 import { toSelectUser } from "../../../../core/routes";
 import type { User } from "../../types";
@@ -22,7 +22,7 @@ export const UserRow = ({ user }: { user: User }) => {
         <TableCell key={index}>{field}</TableCell>
       ))}
       <TableCell isActionCell>
-        <AddUser to={toSelectUser({ id: String(user.id) })}>preview</AddUser>
+        <AddUserPageLink to={toSelectUser({ id: String(user.id) })}>preview</AddUserPageLink>
         <Button onClick={() => dispatch(deleteUser(user.id))}>delete</Button>
       </TableCell>
     </TableRow>
