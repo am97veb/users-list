@@ -17,6 +17,9 @@ const usersSlice = createSlice({
       const index = users.findIndex((user) => user.id === userId);
       users.splice(index, 1);
     },
+    addUser: ({users}, {payload: userData}) => {
+      users.push(userData);
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -34,7 +37,7 @@ const usersSlice = createSlice({
   },
 });
 
-export const { deleteUser } = usersSlice.actions;
+export const { deleteUser, addUser } = usersSlice.actions;
 export const selectUsers = (state: RootState) => state.users.users;
 export const selectUsersLoading = (state: RootState) => state.users.loading;
 export const selectUsersError = (state: RootState) => state.users.error;
