@@ -3,8 +3,12 @@ import { type User } from "../UsersListPage/types";
 import { Form, Fieldset, FieldSignature, Label, Legend } from "./styled";
 import { Input } from "../../common/Input";
 import { Button } from "../../common/Button";
+import { useAppDispatch } from "../../core/hooks";
+import { addUser } from "../UsersListPage/usersSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 export const AddUsersPage = () => {
+  const dispatch = useAppDispatch();
   const [userData, setUserData] = useState<Omit<User, "id">>({
     name: "",
     username: "",
@@ -24,8 +28,13 @@ export const AddUsersPage = () => {
     website: "",
   });
 
+  const onFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(addUser({ ...userData, id: nanoid() }));
+  };
+
   return (
-    <Form>
+    <Form onSubmit={onFormSubmit}>
       <Fieldset>
         <Legend>basic info</Legend>
 
@@ -65,12 +74,7 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>city*:</FieldSignature>
-          <Input
-            name="address.city"
-            type="text"
-            required
-            value={userData.address.city}
-          />
+          <Input name="address.city" type="text" required />
         </Label>
 
         <Label>
