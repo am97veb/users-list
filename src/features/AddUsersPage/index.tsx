@@ -33,6 +33,26 @@ export const AddUsersPage = () => {
     dispatch(addUser({ ...userData, id: nanoid() }));
   };
 
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    const [group, field] = name.split(".");
+
+    if (field) {
+      setUserData((previousUserData) => ({
+        ...previousUserData,
+        [group]: {
+          ...(previousUserData[group as keyof Omit<User, "id">] as object),
+          [field]: value,
+        },
+      }));
+    } else {
+      setUserData((previousUserData) => ({
+        ...previousUserData,
+        [name]: value,
+      }));
+    }
+  };
+
   return (
     <Form onSubmit={onFormSubmit}>
       <Fieldset>
@@ -40,22 +60,45 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>name*:</FieldSignature>
-          <Input name="name" type="text" required />
+          <Input
+            name="name"
+            type="text"
+            required
+            value={userData.name}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>email*:</FieldSignature>
-          <Input name="email" type="email" required />
+          <Input
+            name="email"
+            type="email"
+            required
+            value={userData.email}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>phone*:</FieldSignature>
-          <Input name="phone" type="number" required />
+          <Input
+            name="phone"
+            type="number"
+            required
+            value={userData.phone}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>website:</FieldSignature>
-          <Input name="website" type="text"/>
+          <Input
+            name="website"
+            type="text"
+            value={userData.website}
+            onChange={onInputChange}
+          />
         </Label>
       </Fieldset>
 
@@ -64,22 +107,46 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>street*:</FieldSignature>
-          <Input name="address.street" type="text" required />
+          <Input
+            name="address.street"
+            type="text"
+            required
+            value={userData.address.street}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>zip code*:</FieldSignature>
-          <Input name="address.zipcode" type="number" required />
+          <Input
+            name="address.zipcode"
+            type="number"
+            required
+            value={userData.address.zipcode}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>city*:</FieldSignature>
-          <Input name="address.city" type="text" required />
+          <Input
+            name="address.city"
+            type="text"
+            required
+            value={userData.address.city}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>suite*:</FieldSignature>
-          <Input name="address.suite" type="number" required />
+          <Input
+            name="address.suite"
+            type="text"
+            required
+            value={userData.address.suite}
+            onChange={onInputChange}
+          />
         </Label>
       </Fieldset>
 
@@ -88,17 +155,32 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>name:</FieldSignature>
-          <Input name="company.name" type="text"/>
+          <Input
+            name="company.name"
+            type="text"
+            value={userData.company?.name}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>catch phrase:</FieldSignature>
-          <Input name="company.catchPhrase" type="text"/>
+          <Input
+            name="company.catchPhrase"
+            type="text"
+            value={userData.company?.catchPhrase}
+            onChange={onInputChange}
+          />
         </Label>
 
         <Label>
           <FieldSignature>bs:</FieldSignature>
-          <Input name="company.bs" type="text"/>
+          <Input
+            name="company.bs"
+            type="text"
+            value={userData.company?.bs}
+            onChange={onInputChange}
+          />
         </Label>
       </Fieldset>
       <p> * required fields </p>
