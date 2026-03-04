@@ -55,7 +55,7 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>website:</FieldSignature>
-          <Input name="website" />
+          <Input name="website" type="text"/>
         </Label>
       </Fieldset>
 
@@ -64,7 +64,7 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>street*:</FieldSignature>
-          <Input name="address.street" required />
+          <Input name="address.street" type="text" required />
         </Label>
 
         <Label>
@@ -79,7 +79,7 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>suite*:</FieldSignature>
-          <Input name="address.suite" type="text" required />
+          <Input name="address.suite" type="number" required />
         </Label>
       </Fieldset>
 
@@ -88,17 +88,17 @@ export const AddUsersPage = () => {
 
         <Label>
           <FieldSignature>name:</FieldSignature>
-          <Input name="company.name" />
+          <Input name="company.name" type="text"/>
         </Label>
 
         <Label>
           <FieldSignature>catch phrase:</FieldSignature>
-          <Input name="company.catchPhrase" />
+          <Input name="company.catchPhrase" type="text"/>
         </Label>
 
         <Label>
           <FieldSignature>bs:</FieldSignature>
-          <Input name="company.bs" />
+          <Input name="company.bs" type="text"/>
         </Label>
       </Fieldset>
       <p> * required fields </p>
