@@ -7,9 +7,7 @@ import { useAppDispatch } from "../../core/hooks";
 import { addUser } from "../UsersListPage/usersSlice";
 import { nanoid } from "@reduxjs/toolkit";
 
-export const AddUsersPage = () => {
-  const dispatch = useAppDispatch();
-  const [userData, setUserData] = useState<Omit<User, "id">>({
+const initialUserData: Omit<User, "id"> = {
     name: "",
     username: "",
     email: "",
@@ -26,11 +24,16 @@ export const AddUsersPage = () => {
       bs: "",
     },
     website: "",
-  });
+  };
+
+export const AddUsersPage = () => {
+  const dispatch = useAppDispatch();
+  const [userData, setUserData] = useState(initialUserData);
 
   const onFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(addUser({ ...userData, id: nanoid() }));
+    setUserData(initialUserData);
   };
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
