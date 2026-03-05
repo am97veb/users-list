@@ -1,4 +1,4 @@
-import { toUsers } from "../routes";
+import { toAddUsers, toUsers } from "../routes";
 import { AppTitle } from "./AppTitle";
 import {
   BarWrapper,
@@ -13,6 +13,9 @@ export const Navigation = () => (
     <NavigationList>
       <NavigationItem>
         <NavigationLink to={toUsers()}>users list</NavigationLink>
+      </NavigationItem>
+      <NavigationItem>
+        <NavigationLink to={toAddUsers()}>add users</NavigationLink>
       </NavigationItem>
     </NavigationList>
   </BarWrapper>
