@@ -6,14 +6,15 @@ import { List, ListItem, Key, Value } from "./styled";
 
 export const UserPage = () => {
   const { id } = useParams();
-  const user = useAppSelector((state) => selectUserById(state, Number(id)));
+  const user = useAppSelector((state) => selectUserById(state, id ? id : ""));
 
   return (
     <List>
       {user &&
         Object.entries(mapUserData(user)).map(([key, value]) => (
           <ListItem key={key}>
-            <Key>{key}</Key><Value>{value}</Value>
+            <Key>{key}</Key>
+            <Value>{value}</Value>
           </ListItem>
         ))}
     </List>
