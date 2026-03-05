@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSortUsers } from "./useSortUsers";
-import { selectUsersError, selectUsersLoading } from "./usersSlice";
+import {
+  selectUsers,
+  selectUsersError,
+  selectUsersLoading,
+} from "./usersSlice";
 import { useAppDispatch, useAppSelector } from "../../core/hooks";
 import { fetchUsers } from "./usersThunk";
 import { UsersToolbar } from "./UsersToolbar";
@@ -14,10 +18,13 @@ export const UsersListPage = () => {
   const loading = useAppSelector(selectUsersLoading);
   const error = useAppSelector(selectUsersError);
   const dispatch = useAppDispatch();
+  const users = useAppSelector(selectUsers);
 
   useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+    if (users.length === 0) {
+      dispatch(fetchUsers());
+    }
+  }, []);
 
   if (loading) return <Loading />;
   if (error)
