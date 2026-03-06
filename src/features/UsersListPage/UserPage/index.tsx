@@ -19,7 +19,7 @@ export const UserPage = () => {
         Object.entries(mapUserData(user)).map(([key, value]) => (
           <ListItem key={key}>
             <Key>{key}</Key>
-            <Value>{value}</Value>
+            <Value>{value === "" ? "No data available" : value}</Value>
           </ListItem>
         ))}
     </List>
