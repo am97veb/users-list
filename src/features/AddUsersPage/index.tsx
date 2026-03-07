@@ -8,23 +8,23 @@ import { addUser } from "../UsersListPage/usersSlice";
 import { nanoid } from "@reduxjs/toolkit";
 
 const initialUserData: Omit<User, "id"> = {
+  name: "",
+  username: "",
+  email: "",
+  phone: "",
+  address: {
+    street: "",
+    suite: "",
+    city: "",
+    zipcode: "",
+  },
+  company: {
     name: "",
-    username: "",
-    email: "",
-    phone: "",
-    address: {
-      city: "",
-      street: "",
-      zipcode: "",
-      suite: "",
-    },
-    company: {
-      name: "",
-      catchPhrase: "",
-      bs: "",
-    },
-    website: "",
-  };
+    catchPhrase: "",
+    bs: "",
+  },
+  website: "",
+};
 
 export const AddUsersPage = () => {
   const dispatch = useAppDispatch();
@@ -120,6 +120,17 @@ export const AddUsersPage = () => {
         </Label>
 
         <Label>
+          <FieldSignature>suite:</FieldSignature>
+          <Input
+            name="address.suite"
+            type="text"
+            required
+            value={userData.address.suite}
+            onChange={onInputChange}
+          />
+        </Label>
+
+        <Label>
           <FieldSignature>zip code*:</FieldSignature>
           <Input
             name="address.zipcode"
@@ -137,17 +148,6 @@ export const AddUsersPage = () => {
             type="text"
             required
             value={userData.address.city}
-            onChange={onInputChange}
-          />
-        </Label>
-
-        <Label>
-          <FieldSignature>suite*:</FieldSignature>
-          <Input
-            name="address.suite"
-            type="text"
-            required
-            value={userData.address.suite}
             onChange={onInputChange}
           />
         </Label>
