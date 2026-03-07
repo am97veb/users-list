@@ -1,60 +1,10 @@
-import { useState } from "react";
-import { type User } from "../UsersListPage/types";
 import { Form, Fieldset, FieldSignature, Label, Legend } from "./styled";
 import { Input } from "../../common/Input";
 import { Button } from "../../common/Button";
-import { useAppDispatch } from "../../core/hooks";
-import { addUser } from "../UsersListPage/usersSlice";
-import { nanoid } from "@reduxjs/toolkit";
-
-const initialUserData: Omit<User, "id"> = {
-  name: "",
-  username: "",
-  email: "",
-  phone: "",
-  address: {
-    street: "",
-    suite: "",
-    city: "",
-    zipcode: "",
-  },
-  company: {
-    name: "",
-    catchPhrase: "",
-  },
-  website: "",
-};
+import { useAddUserForm } from "./useAddUserForm";
 
 export const AddUsersPage = () => {
-  const dispatch = useAppDispatch();
-  const [userData, setUserData] = useState(initialUserData);
-
-  const onFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    dispatch(addUser({ ...userData, id: nanoid() }));
-    setUserData(initialUserData);
-  };
-
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    const [group, field] = name.split(".");
-
-    if (field) {
-      setUserData((previousUserData) => ({
-        ...previousUserData,
-        [group]: {
-          ...(previousUserData[group as keyof Omit<User, "id">] as object),
-          [field]: value,
-        },
-      }));
-    } else {
-      setUserData((previousUserData) => ({
-        ...previousUserData,
-        [name]: value,
-      }));
-    }
-  };
-
+  const { userData, onFormSubmit, onInputChange } = useAddUserForm();
   return (
     <Form onSubmit={onFormSubmit}>
       <Fieldset>
