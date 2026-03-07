@@ -21,7 +21,6 @@ const initialUserData: Omit<User, "id"> = {
   company: {
     name: "",
     catchPhrase: "",
-    bs: "",
   },
   website: "",
 };
@@ -172,16 +171,6 @@ export const AddUsersPage = () => {
             name="company.catchPhrase"
             type="text"
             value={userData.company?.catchPhrase}
-            onChange={onInputChange}
-          />
-        </Label>
-
-        <Label>
-          <FieldSignature>bs:</FieldSignature>
-          <Input
-            name="company.bs"
-            type="text"
-            value={userData.company?.bs}
             onChange={onInputChange}
           />
         </Label>

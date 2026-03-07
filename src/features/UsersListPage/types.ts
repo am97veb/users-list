@@ -19,7 +19,6 @@ export interface UserAddress {
 export interface Company {
   name: string;
   catchPhrase: string;
-  bs: string;
 }
 
 export interface FilterUsersByAddressProps {
