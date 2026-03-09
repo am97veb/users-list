@@ -16,7 +16,9 @@ export const AddUsersPage = () => {
 
           {fields.map(({ signature, name, type, required, value }) => (
             <Label key={name}>
-              <FieldSignature>{signature}</FieldSignature>
+              <FieldSignature>
+                {required === true ? `${signature}*` : signature}
+              </FieldSignature>
               <Input
                 name={name}
                 type={type}
