@@ -8,7 +8,6 @@ export const BarWrapper = styled.div`
   padding: 20px;
   color: whitesmoke;
   background-color: grey;
-  /* margin: 0 auto 20px; */
   margin-bottom: 20px;
   border-radius: 0 0 5px 5px;
 `;
