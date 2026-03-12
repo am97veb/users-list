@@ -22,6 +22,7 @@ export const NavigationList = styled.ul`
 
 export const NavigationItem = styled.li`
   list-style: none;
+  text-transform: capitalize;
 `;
 
 export const NavigationLink = styled(NavLink)`
