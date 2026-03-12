@@ -4,13 +4,13 @@ import { App } from "./core/App.tsx";
 import { Provider } from "react-redux";
 import { store } from "./core/store.ts";
 import { GlobalStyle } from "./GlobalStyles.ts";
-import { ToastContainer } from "react-toastify";
+import { AppToastContianer } from "./ToastContainer/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <GlobalStyle />
-      <ToastContainer />
+      <AppToastContianer />
       <App />
     </Provider>
   </StrictMode>,
