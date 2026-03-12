@@ -5,4 +5,5 @@ export const StyledAppTitle = styled(Link)`
   font-size: 30px;
   text-decoration: none;
   color: whitesmoke;
+  text-transform: capitalize;
 `;
