@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../core/hooks";
 import type { User } from "../UsersListPage/types";
 import { nanoid } from "@reduxjs/toolkit";
 import { addUser } from "../UsersListPage/usersSlice";
+import { toast } from "react-toastify";
 
 const initialUserData: Omit<User, "id"> = {
   name: "",
@@ -30,6 +31,7 @@ export const useAddUserForm = () => {
     event.preventDefault();
     dispatch(addUser({ ...userData, id: nanoid() }));
     setUserData(initialUserData);
+    toast.success("User added successfully!")
   };
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
