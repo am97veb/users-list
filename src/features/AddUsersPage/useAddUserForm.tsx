@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 
 const initialUserData: Omit<User, "id"> = {
   name: "",
-  username: "",
   email: "",
   phone: "",
   address: {
