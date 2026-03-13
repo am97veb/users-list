@@ -15,8 +15,8 @@ export const TableCell = styled.td<StyledComponentsProps>`
     border-right: none;
   }
 
-  ${({ isActionCell }) =>
-    isActionCell &&
+  ${({ $isActionCell }) =>
+    $isActionCell &&
     css`
       width: auto;
       padding-right: 0;

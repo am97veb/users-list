@@ -21,7 +21,7 @@ export const UserRow = ({ user }: { user: User }) => {
       {userFields.map((field, index) => (
         <TableCell key={index}>{field}</TableCell>
       ))}
-      <TableCell isActionCell>
+      <TableCell $isActionCell>
         <AddUserPageLink to={toSelectUser({ id: String(user.id) })}>preview</AddUserPageLink>
         <Button onClick={() => dispatch(deleteUser(user.id))}>delete</Button>
       </TableCell>
