@@ -20,6 +20,10 @@ export const GlobalStyle = createGlobalStyle`
 
     #root {
         margin: 0 50px;
+
+        @media (max-width: 992px) {
+            margin: 0 15px;
+        }
     }
 
     button {
