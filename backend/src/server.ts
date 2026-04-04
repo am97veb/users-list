@@ -40,7 +40,12 @@ app.post("/users", async (req, res) => {
 });
 
 app.get("/users", async (req, res) => {
-  const users = await prisma.user.findMany();
+  const users = await prisma.user.findMany({
+    include: {
+      address: true,
+      company: true,
+    }
+  });
   res.json(users);
 });
 
