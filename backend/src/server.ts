@@ -10,6 +10,14 @@ const app = express();
 
 app.use(express.json());
 
+app.delete("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  await prisma.user.delete({
+    where: { id: Number(id) },
+  });
+  res.status(200).json({message: "User deleted successfully"});
+});
+
 app.post("/users", async (req, res) => {
   const { name, email, phone, website, address, company } = req.body;
 
@@ -27,13 +35,12 @@ app.post("/users", async (req, res) => {
           zipcode: address.zipcode,
         },
       },
-      company: company
-      && {
-            create: {
-              name: company.name,
-              catchPhrase: company.catchPhrase,
-            },
-          },
+      company: company && {
+        create: {
+          name: company.name,
+          catchPhrase: company.catchPhrase,
+        },
+      },
     },
   });
   res.status(201).json(user);
@@ -44,7 +51,7 @@ app.get("/users", async (req, res) => {
     include: {
       address: true,
       company: true,
-    }
+    },
   });
   res.json(users);
 });
