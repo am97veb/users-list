@@ -15,7 +15,7 @@ app.delete("/users/:id", async (req, res) => {
   await prisma.user.delete({
     where: { id: Number(id) },
   });
-  res.status(200).json({message: "User deleted successfully"});
+  res.status(200).json({ message: "User deleted successfully" });
 });
 
 app.post("/users", async (req, res) => {
@@ -43,7 +43,7 @@ app.post("/users", async (req, res) => {
       },
     },
   });
-  res.status(201).json(user);
+  res.status(201).json({ message: "User created successfully" });
 });
 
 app.get("/users", async (req, res) => {
