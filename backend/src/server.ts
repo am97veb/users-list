@@ -9,9 +9,11 @@ const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 const app = express();
 
-app.use(cors({
-  origin: "http://localhost:5173",
-}))
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 
 app.use(express.json());
 
@@ -47,8 +49,12 @@ app.post("/users", async (req, res) => {
         },
       },
     },
+    include: {
+      address: true,
+      company: true,
+    },
   });
-  res.status(201).json({ message: "User created successfully" });
+  res.status(201).json(user);
 });
 
 app.get("/users", async (req, res) => {
