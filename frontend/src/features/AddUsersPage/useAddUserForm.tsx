@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../core/hooks";
 import type { User } from "../UsersListPage/types";
-import { nanoid } from "@reduxjs/toolkit";
-import { addUser } from "../UsersListPage/usersSlice";
 import { toast } from "react-toastify";
+import { addUserThunk } from "../UsersListPage/usersThunk";
 
 const initialUserData: Omit<User, "id"> = {
   name: "",
@@ -28,7 +27,7 @@ export const useAddUserForm = () => {
 
   const onFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(addUser({ ...userData, id: nanoid() }));
+    dispatch(addUserThunk(userData));
     setUserData(initialUserData);
     toast.success("User added successfully!")
   };
