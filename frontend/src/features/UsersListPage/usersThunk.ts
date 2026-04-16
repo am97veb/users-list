@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchApiData } from "../../fetchApiData";
-import type { User } from "./types";
+
 import axios from "axios";
+import type { User } from "../../types";
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   const users = await fetchApiData();
