@@ -1,12 +1,11 @@
 import { AddUserPageLink, Button } from "../../../../common/Button";
-import { useAppDispatch } from "../../../../core/hooks";
 import { toSelectUser } from "../../../../core/routes";
-import type { User } from "../../types";
-import { deleteUserThunk } from "../../usersThunk";
+import { useDeleteUser } from "../../../../hooks/useDeleteUser";
+import type { User } from "../../../../types";
 import { TableCell, TableRow } from "./styled";
 
 export const UserRow = ({ user }: { user: User }) => {
-  const dispatch = useAppDispatch();
+  const deleteUser = useDeleteUser();
 
   const userFields = [
     user.name,
@@ -25,9 +24,7 @@ export const UserRow = ({ user }: { user: User }) => {
         <AddUserPageLink to={toSelectUser({ id: String(user.id) })}>
           preview
         </AddUserPageLink>
-        <Button onClick={() => dispatch(deleteUserThunk(user.id))}>
-          delete
-        </Button>
+        <Button onClick={() => deleteUser.mutate(user.id)}>delete</Button>
       </TableCell>
     </TableRow>
   );

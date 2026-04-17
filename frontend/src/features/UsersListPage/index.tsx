@@ -1,35 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSortUsers } from "./useSortUsers";
-import {
-  selectUsers,
-  selectUsersError,
-  selectUsersLoading,
-} from "./usersSlice";
-import { useAppDispatch, useAppSelector } from "../../core/hooks";
-import { fetchUsers } from "./usersThunk";
 import { UsersToolbar } from "./UsersToolbar";
 import { UsersTable } from "./UsersTable";
 import { Loading } from "../../common/Loading";
 import { Error } from "../../common/Error";
+import { useUsers } from "../../hooks/useUsers";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
-  const { sortedUsers, toggleSort } = useSortUsers();
-  const loading = useAppSelector(selectUsersLoading);
-  const error = useAppSelector(selectUsersError);
-  const dispatch = useAppDispatch();
-  const users = useAppSelector(selectUsers);
+  const { data, isLoading, error } = useUsers();
+  const { sortedUsers, toggleSort } = useSortUsers(data || []);
 
-  useEffect(() => {
-    if (users.length === 0) {
-      dispatch(fetchUsers());
-    }
-  }, []);
-
-  if (loading) return <Loading />;
+  if (isLoading) return <Loading />;
   if (error)
     return (
-      <Error message="Sorry, We can't show users list now." error={error} />
+      <Error
+        message="Sorry, We can't show users list now."
+        error={error.message}
+      />
     );
 
   return (

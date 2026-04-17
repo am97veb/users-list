@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../core/hooks";
-import type { User } from "../UsersListPage/types";
 import { toast } from "react-toastify";
-import { addUserThunk } from "../UsersListPage/usersThunk";
+import type { User } from "../../types";
+import { useAddUser } from "../../hooks/useAddUsers";
 
 const initialUserData: Omit<User, "id"> = {
   name: "",
@@ -22,12 +21,12 @@ const initialUserData: Omit<User, "id"> = {
 };
 
 export const useAddUserForm = () => {
-  const dispatch = useAppDispatch();
+  const addUser = useAddUser();
   const [userData, setUserData] = useState(initialUserData);
 
   const onFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(addUserThunk(userData));
+    addUser.mutate(userData);
     setUserData(initialUserData);
     toast.success("User added successfully!")
   };

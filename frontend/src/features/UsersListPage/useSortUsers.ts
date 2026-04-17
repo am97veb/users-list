@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useAppSelector } from "../../core/hooks";
-import { selectUsers } from "./usersSlice";
+import type { User } from "../../types";
 
-export const useSortUsers = () => {
-  const usersList = useAppSelector(selectUsers);
+export const useSortUsers = (users: User[]) => {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
-  const sortedUsers = [...usersList].sort((a, b) => {
+  const sortedUsers = [...users].sort((a, b) => {
     if (sortOrder === "asc") {
       return a.name.localeCompare(b.name);
     } else {
