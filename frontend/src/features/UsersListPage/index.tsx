@@ -5,6 +5,7 @@ import { UsersTable } from "./UsersTable";
 import { Loading } from "../../common/Loading";
 import { Error } from "../../common/Error";
 import { useUsers } from "../../hooks/useUsers";
+import { EmptyList } from "./EmptyList";
 
 export const UsersListPage = () => {
   const [searchAddress, setSearchAddress] = useState("");
@@ -19,6 +20,7 @@ export const UsersListPage = () => {
         error={error.message}
       />
     );
+  if (sortedUsers.length === 0) return <EmptyList />;
 
   return (
     <>
