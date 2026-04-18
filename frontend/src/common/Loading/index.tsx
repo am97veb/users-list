@@ -1,8 +1,9 @@
-import { Dots, LoadingText } from "./styled";
+import { Message } from "../Message";
+import { Dots } from "./styled";
 
 export const Loading = () => (
-  <LoadingText>
+  <Message>
     Loading data
     <Dots />
-  </LoadingText>
+  </Message>
 );

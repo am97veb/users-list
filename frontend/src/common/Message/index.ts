@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
-export const ErrorText = styled.p`
+export const Message = styled.p`
   font-size: medium;
+  margin: 0;
 `;

@@ -1,10 +1,10 @@
-import { ErrorText } from "./styled";
+import { Message } from "../Message";
 import type { ErrorProps } from "./types";
 
 export const Error = ({ message, error }: ErrorProps) => (
   <>
-    <ErrorText>
+    <Message>
       {message} {error}
-    </ErrorText>
+    </Message>
   </>
 );
