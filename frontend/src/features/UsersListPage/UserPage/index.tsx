@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import { mapUserData } from "../helpers/mapUserData";
 import { List, ListItem, Key, Value } from "./styled";
 import { Error } from "../../../common/Error";
-import { useUsers } from "../../../hooks/useUsers";
 import { Loading } from "../../../common/Loading";
+import { useUser } from "../../../hooks/useUser";
 
 export const UserPage = () => {
   const { id } = useParams();
-  const { data: users, isLoading, error } = useUsers();
+  const { data: user, isLoading, error } = useUser(id || "");
 
   if (isLoading) return <Loading />;
 
@@ -19,8 +19,6 @@ export const UserPage = () => {
       />
     );
   }
-
-  const user = users?.find((user) => user.id === Number(id));
 
   if (!user) {
     return <Error message="Sorry, the user cannot be found." />;
