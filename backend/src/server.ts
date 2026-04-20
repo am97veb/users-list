@@ -57,6 +57,23 @@ app.post("/users", async (req, res) => {
   res.status(201).json(user);
 });
 
+app.get("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const user = await prisma.user.findUnique({
+    where: { id: Number(id) },
+    include: {
+      address: true,
+      company: true,
+    },
+  });
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  res.json(user);
+});
+
 app.get("/users", async (req, res) => {
   const users = await prisma.user.findMany({
     include: {
