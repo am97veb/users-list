@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { mapUserData } from "../helpers/mapUserData";
 import { List, ListItem, Key, Value } from "./styled";
-import { Error } from "../../../common/Error";
-import { Loading } from "../../../common/Loading";
-import { useUser } from "../../../hooks/useUser";
+import { Error } from "../../../../common/Error";
+import { Loading } from "../../../../common/Loading";
+import { useUser } from "../../hooks/useUser";
 
 export const UserPage = () => {
   const { id } = useParams();

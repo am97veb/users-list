@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useSortUsers } from "./useSortUsers";
 import { UsersToolbar } from "./UsersToolbar";
 import { UsersTable } from "./UsersTable";
-import { Loading } from "../../common/Loading";
-import { Error } from "../../common/Error";
-import { useUsers } from "../../hooks/useUsers";
+import { Loading } from "../../../common/Loading";
+import { Error } from "../../../common/Error";
+import { useUsers } from "../hooks/useUsers";
 import { EmptyList } from "./EmptyList";
 
 export const UsersListPage = () => {

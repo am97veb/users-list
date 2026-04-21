@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { User } from "../../types";
+import type { User } from "../types";
 
 export const useSortUsers = (users: User[]) => {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");

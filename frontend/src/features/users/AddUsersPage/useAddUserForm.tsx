@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import type { User } from "../../types";
-import { useAddUser } from "../../hooks/useAddUsers";
+import type { User } from "../types";
+import { useAddUser } from "../hooks/useAddUsers";
 
 const initialUserData: Omit<User, "id"> = {
   name: "",

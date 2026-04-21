@@ -1,6 +1,6 @@
 import { Form, Fieldset, FieldSignature, Label, Legend } from "./styled";
-import { Input } from "../../common/Input";
-import { Button } from "../../common/Button";
+import { Input } from "../../../common/Input";
+import { Button } from "../../../common/Button";
 import { useAddUserForm } from "./useAddUserForm";
 import { getFormFields } from "./getFormFields";
 

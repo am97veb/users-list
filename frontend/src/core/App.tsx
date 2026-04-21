@@ -1,9 +1,9 @@
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { toAddUsers, toSelectUser, toUsers } from "./routes";
 import { Navigation } from "./Navigation";
-import { UsersListPage } from "../features/UsersListPage";
-import { UserPage } from "../features/UsersListPage/UserPage";
-import { AddUsersPage } from "../features/AddUsersPage";
+import { UsersListPage } from "../features/users/UsersListPage";
+import { UserPage } from "../features/users/UsersListPage/UserPage";
+import { AddUsersPage } from "../features/users/AddUsersPage";
 
 export const App = () => (
     <HashRouter>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { type StyledComponentsProps } from "../../features/UsersListPage/types";
+import { type StyledComponentsProps } from "../../features/users/UsersListPage/types";
 
 export const baseButtonStyle = css`
   width: 75px;

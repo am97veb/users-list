@@ -1,7 +1,7 @@
-import { AddUserPageLink, Button } from "../../../../common/Button";
-import { toSelectUser } from "../../../../core/routes";
-import { useDeleteUser } from "../../../../hooks/useDeleteUser";
-import type { User } from "../../../../types";
+import { AddUserPageLink, Button } from "../../../../../common/Button";
+import { toSelectUser } from "../../../../../core/routes";
+import { useDeleteUser } from "../../../hooks/useDeleteUser";
+import type { User } from "../../../types";
 import { TableCell, TableRow } from "./styled";
 
 export const UserRow = ({ user }: { user: User }) => {
