@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./core/App.tsx";
 import { GlobalStyle } from "./GlobalStyles.ts";
-import { AppToastContianer } from "./ToastContainer/index.tsx";
+import { AppToastContianer } from "./common/ToastContainer/index.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
