@@ -1,6 +1,6 @@
 import { StyledToastContainer } from "./styled";
 
-export const AppToastContianer = () => (
+export const ToastProvider = () => (
     <StyledToastContainer
         position="top-center"
         autoClose={3000}
