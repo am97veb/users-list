@@ -1,4 +1,4 @@
-import type { User } from "../UsersListPage/types";
+import type { User } from "../types";
 
 export const getFormFields = (userData: Omit<User, "id">) => ({
   "basic info": [
