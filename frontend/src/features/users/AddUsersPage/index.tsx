@@ -5,7 +5,7 @@ import { useAddUserForm } from "./useAddUserForm";
 import { getFormFields } from "./getFormFields";
 
 export const AddUsersPage = () => {
-  const { userData, onFormSubmit, onInputChange } = useAddUserForm();
+  const { userData, onFormSubmit, onInputChange, isPending } = useAddUserForm();
   const formFields = getFormFields(userData);
 
   return (
@@ -32,7 +32,9 @@ export const AddUsersPage = () => {
       ))}
 
       <p> * required fields </p>
-      <Button addUserToListButton>add to users list</Button>
+      <Button addUserToListButton disabled={isPending}>
+        add to users list
+      </Button>
     </Form>
   );
 };

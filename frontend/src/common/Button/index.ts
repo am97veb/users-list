@@ -13,7 +13,7 @@ export const baseButtonStyle = css`
   text-decoration: none;
   display: inline-block;
   text-align: center;
-  
+
   &::first-letter {
     text-transform: uppercase;
   }
@@ -28,6 +28,13 @@ export const Button = styled.button<StyledComponentsProps>`
       min-width: 130px;
       padding: 2px 15px;
       align-self: flex-end;
+    `}
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      filter: brightness(0.5);
+      cursor: not-allowed;
     `}
 `;
 

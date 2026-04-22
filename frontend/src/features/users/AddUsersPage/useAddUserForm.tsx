@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 import type { User } from "../types";
-import { useAddUser } from "../hooks/useAddUsers";
+import { useAddUser } from "../hooks/useAddUser";
 
 const initialUserData: Omit<User, "id"> = {
   name: "",
@@ -26,9 +25,11 @@ export const useAddUserForm = () => {
 
   const onFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addUser.mutate(userData);
-    setUserData(initialUserData);
-    toast.success("User added successfully!")
+    addUser.mutate(userData, {
+      onSuccess: () => {
+        setUserData(initialUserData);
+      },
+    });
   };
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,5 +52,10 @@ export const useAddUserForm = () => {
     }
   };
 
-  return { userData, onFormSubmit, onInputChange };
+  return {
+    userData,
+    onFormSubmit,
+    onInputChange,
+    isPending: addUser.isPending,
+  };
 };
