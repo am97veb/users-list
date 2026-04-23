@@ -24,7 +24,9 @@ export const UserRow = ({ user }: { user: User }) => {
         <AddUserPageLink to={toSelectUser({ id: String(user.id) })}>
           preview
         </AddUserPageLink>
-        <Button onClick={() => deleteUser.mutate(user.id)}>delete</Button>
+        <Button onClick={() => deleteUser.mutate(user.id)} disabled={deleteUser.isPending}>
+          delete
+        </Button>
       </TableCell>
     </TableRow>
   );
