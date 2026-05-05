@@ -2,7 +2,7 @@ import { AddUserPageLink, Button } from "../../../../../common/Button";
 import { toSelectUser } from "../../../../../core/routes";
 import { useDeleteUser } from "../../../hooks/useDeleteUser";
 import type { User } from "../../../types";
-import { TableCell, TableRow } from "./styled";
+import { StyledEyeIcon, StyledTrashIcon, TableCell, TableRow } from "./styled";
 
 export const UserRow = ({ user }: { user: User }) => {
   const deleteUser = useDeleteUser();
@@ -21,11 +21,18 @@ export const UserRow = ({ user }: { user: User }) => {
         <TableCell key={index}>{field}</TableCell>
       ))}
       <TableCell $isActionCell>
-        <AddUserPageLink to={toSelectUser({ id: String(user.id) })}>
-          preview
+        <AddUserPageLink
+          $tableButton
+          to={toSelectUser({ id: String(user.id) })}
+        >
+          <StyledEyeIcon />
         </AddUserPageLink>
-        <Button onClick={() => deleteUser.mutate(user.id)} disabled={deleteUser.isPending}>
-          delete
+        <Button
+          $tableButton
+          onClick={() => deleteUser.mutate(user.id)}
+          disabled={deleteUser.isPending}
+        >
+          <StyledTrashIcon />
         </Button>
       </TableCell>
     </TableRow>

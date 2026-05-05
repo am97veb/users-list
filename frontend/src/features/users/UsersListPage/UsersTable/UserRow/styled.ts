@@ -1,11 +1,14 @@
 import styled, { css } from "styled-components";
 import type { StyledComponentsProps } from "../../types";
+import TrashIcon from "@/assets/icons/trash.svg?react";
+import EyeIcon from "@/assets/icons/eye.svg?react";
 
 export const TableCell = styled.td<StyledComponentsProps>`
   width: 200px;
   padding: 0 20px;
   border-right: 1px solid gray;
-  margin: 10px 0;
+  margin: 0;
+  height: 45px;
 
   &:first-of-type {
     padding: 0 20px 0 0;
@@ -18,20 +21,22 @@ export const TableCell = styled.td<StyledComponentsProps>`
   ${({ $isActionCell }) =>
     $isActionCell &&
     css`
-      width: auto;
-      padding-right: 0;
       display: flex;
-      flex-direction: column;
-      gap: 2px;
+      align-items: center;
+      gap: 10px;
     `}
 `;
 
-export const TableRow = styled.tr`
-  &:first-of-type ${TableCell} {
-    margin: 0 0 10px;
-  }
+export const TableRow = styled.tr``;
 
-  &:last-of-type ${TableCell} {
-    margin: 10px 0 0;
-  }
+export const StyledEyeIcon = styled(EyeIcon)`
+  color: white;
+  width: 15px;
+  height: 20px;
+`;
+
+export const StyledTrashIcon = styled(TrashIcon)`
+  color: white;
+  width: 14px;
+  height: 18px;
 `;

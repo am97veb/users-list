@@ -7,5 +7,6 @@ export interface FilterUsersByAddressProps {
 
 export interface StyledComponentsProps {
   $isActionCell?: boolean;
-  addUserToListButton?: boolean
+  addUserToListButton?: boolean;
+  $tableButton?: boolean;
 }

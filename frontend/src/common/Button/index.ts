@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { type StyledComponentsProps } from "../../features/users/UsersListPage/types";
 
-export const baseButtonStyle = css`
+export const baseButtonStyle = css<StyledComponentsProps>`
   width: 75px;
   border: none;
   border-radius: 10px;
@@ -17,6 +17,18 @@ export const baseButtonStyle = css`
   &::first-letter {
     text-transform: uppercase;
   }
+
+  ${({ $tableButton }) =>
+    $tableButton &&
+    css`
+      width: 20px;
+      height: 20px;
+      padding: 2px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `}
 `;
 
 export const Button = styled.button<StyledComponentsProps>`
@@ -38,6 +50,6 @@ export const Button = styled.button<StyledComponentsProps>`
     `}
 `;
 
-export const AddUserPageLink = styled(Link)`
+export const AddUserPageLink = styled(Link)<StyledComponentsProps>`
   ${baseButtonStyle}
 `;
